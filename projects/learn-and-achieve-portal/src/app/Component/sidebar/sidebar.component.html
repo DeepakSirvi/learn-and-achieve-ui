@@ -1,0 +1,59 @@
+<!-- SIDEBAR START -->
+
+<div class="sidebar">
+    <div class="logo">
+        <img src="assets/images/temp_img/logo2-1 1.png">
+    </div>
+    <div class="sidebar_navbar">
+
+        <!-- Getting Started Accordian -->
+        <div class="accordion" id="accordionExample">
+
+            <!-- Dashboard -->
+            <div class="accordion-item selectSection">
+                <h2 class="accordion-header">
+                    <button [routerLink]="'/dashboard/classMaster'" class="accordion-button mb-0" data-number="1" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        <img src="assets/images/svg2/s1.svg" class="accordian_svg">Class Master
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionExample">
+
+                </div>
+            </div>
+            <!-- Subject -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button [routerLink]="'/dashboard/viewSubject'" class="accordion-button collapsed mb-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <img src="assets/images/svg2/s1.svg" class="accordian_svg">Subject
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="selectSection select_option">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button [routerLink]="'/dashboard/question'" class="accordion-button collapsed mb-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <img src="assets/images/svg2/s1.svg" class="accordian_svg">Question Bank
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="selectSection select_option">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

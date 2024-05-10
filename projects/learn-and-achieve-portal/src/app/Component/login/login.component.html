@@ -1,0 +1,189 @@
+<div class="login container">
+    <div class="row h-100">
+        <!-- LEFT LOGIN IMAGE -->
+        <div class="col-md-6 m-auto position-relative">
+            <div class="loginbackground">
+                <div class="login_details">
+                    <h2 class="fs-20 fw-600 text-white text-center">Lorem ipsum dolor sit amet, consectetur</h2>
+                    <h3 class="fs-18 fw-300 text-white text-center">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</h3>
+                </div>
+            </div>
+
+        </div>
+        <!-- RIGHT SIDE -->
+        <div class="col-md-6 m-auto">
+            <!-- LOGIN BOX -->
+            <div class="login_img" id="btn1">
+                <div class="col-md-7 m-auto">
+                    <div class="d-flex justify-content-center login_logo">
+                        <img src="assets/images/temp_img/logo.png" class="img-fluid">
+                    </div>
+                    <div class="mb_30 text-center">
+                        <h3 class="black fs-26 fw-600 mb-2">Welcome back!</h3>
+                        <h4 class="fs-16 fw-500 black mb-0">Enter your Credentials to access your account</h4>
+                    </div>
+
+
+                    <form [formGroup]="loginForm" (ngSubmit)="userLogin(loginForm)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1 " class="login_heading">Email Id</label>
+                            <div class="position-relative mb_30">
+                                <i class="fi fi-rr-envelope input_icons"></i>
+                                <input type="email" class="form-control profile_input" formControlName="userEmail"
+                                    placeholder="Enter your email">
+                            </div>
+                            <div *ngIf="userEmail">
+                                <small class="form-text text-danger"
+                                    *ngIf="userEmail.errors?.['required'] && (userEmail.touched || userEmail.dirty)">This
+                                    field is required</small>
+                                <small class="form-text text-danger" *ngIf="userEmail.errors?.['email']">Enter valid
+                                    email address</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="login_heading">Password</label>
+                            <div class="position-relative mb_12">
+                                <i class="fi fi-rr-lock input_icons"></i>
+                                <input type="password" class="form-control  profile_input px_41"
+                                    formControlName="userPassword" placeholder="Enter your password">
+                                <i class="fi fi-rr-eye eye_icon2 lh-1"></i>
+                            </div>
+                            <div *ngIf="userPassword">
+                                <small class="form-text text-danger"
+                                    *ngIf="userPassword.errors?.['required'] && (userPassword.touched || userPassword.dirty)">This
+                                    field is required</small>
+                            </div>
+                        </div>
+                        <span style="color: red;">{{message}}</span>
+
+                        <h4 class="forgot mb_40 right_menu_toggle" data-bs-target="#forgot-password"
+                            data-bs-toggle="modal" onclick="btn1_controller()">Forgot
+                            password?
+                        </h4>
+                        <button class="btn login_btn fs-15 fw-700 w-100 m-0"
+                            [disabled]="loginForm.invalid">Login</button>
+                    </form>
+                </div>
+            </div>
+            <!-- OTP BOX -->
+
+            <div class="login_img" id="btn3">
+                <div class="col-md-7 m-auto login_box">
+                    <div class="d-flex justify-content-center login_logo">
+                        <img src="assets/images/temp_img/logo.png" class="img-fluid">
+                    </div>
+                    <div class="mb_30 text-center">
+                        <h3 class="black fs-26 fw-600 mb-2">Forgot your password?</h3>
+                        <h4 class="fs-16 fw-500 black mb-0">Please provide your email for verification</h4>
+                    </div>
+                    <form [formGroup]="otpForm" (ngSubmit)="submitOtp()">
+                        <div class="p-0 mb_40">
+                          <div class="d-flex gap_16 justify-content-between">
+                            <input type="text" formControlName="digit1" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit2" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit3" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit4" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit5" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit6" maxlength="1" class="otp_number_input">
+                          </div>
+                        </div>
+                        <button class="btn login_btn fs-15 fw-700 w-100 m-0 right_menu_toggle">Verify my account</button>
+                        <h4 class="resent_otp">Didn’t get the code? <span (click)="resentOTP()">Resend OTP</span></h4>
+                      </form>
+                </div>
+            </div>
+
+
+
+            <!-- FORGOT PASSWORD BOX -->
+            <div class="login_img" #btn2 id="btn2">
+                <div class="col-md-7 m-auto login_box">
+                    <div class="d-flex justify-content-center login_logo">
+                        <img src="assets/images/temp_img/logo.png" class="img-fluid">
+                    </div>
+                    <div class="mb_30 text-center">
+                        <h3 class="black fs-26 fw-600 mb-2">Forgot your password?</h3>
+                        <h4 class="fs-16 fw-500 black mb-0">Please provide your email for verification</h4>
+                    </div>
+                    <form [formGroup]="verifiedEmailFormGroup" (ngSubmit)="submitForm()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1 " class="login_heading">Email Id</label>
+                        <div class="position-relative mb_30">
+                            <i class="fi fi-rr-envelope input_icons"></i>
+                            <input type="email" class="form-control profile_input" formControlName="email"
+                                placeholder="Enter your email">
+                        </div>
+                        <div *ngIf="email">
+                            <small class="form-text text-danger"
+                                *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">This
+                                field is required</small>
+                            <small class="form-text text-danger" *ngIf="email.errors?.['email']">Enter valid
+                                email address</small>
+                        </div>
+                    </div>
+                    <span style="color: red;">{{message}}</span>
+                     <!-- onclick="btn2_controller()"  -->
+                    <button [disabled]="verifiedEmailFormGroup.invalid" class="btn login_btn fs-15 fw-700 w-100 m-0 right_menu_toggle"
+                        >Send OTP</button>
+                    <a href="" class="back_login"><img src="assets/images/temp_img/back.png"> Back to login</a>
+                </form>
+                </div>
+            </div>
+
+
+            <!-- NEW PASSWORD BOX -->
+            <div class="login_img" id="btn4">
+                <div class="col-md-7 m-auto login_box">
+                    <div class="d-flex justify-content-center login_logo">
+                        <img src="assets/images/temp_img/logo.png" class="img-fluid">
+                    </div>
+                    <div class="mb_30 text-center">
+                        <h3 class="black fs-26 fw-600 mb-2">Reset Password</h3>
+                        <h4 class="fs-16 fw-500 black mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h4>
+                    </div>
+                    <form [formGroup]="passwordReset" (ngSubmit)="generateNewPassword()">
+                    <div class="mb_40">
+                        <div class="form-group mb-4">
+                            <label for="exampleInputEmail1 " class="login_heading" >New Password</label>
+                            <div class="position-relative">
+                                <i class="fi fi-rr-lock input_icons"></i>
+                                <input type="text" class="form-control profile_input px_44"
+                                    placeholder="Confirm Password" formControlName="newPassword">
+                                <i class="fi fi-rr-eye-crossed eye_icon"></i>
+                            </div>
+                            <div *ngIf="newPassword">
+                                <small class="form-text text-danger"
+                                    *ngIf="newPassword.errors?.['required'] && (newPassword.touched || newPassword.dirty)">This
+                                    field is required</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1 " class="login_heading" >Confirm New Password</label>
+                            <div class="position-relative">
+                                <i class="fi fi-rr-lock input_icons"></i>
+                                <input type="text" class="form-control profile_input px_44"
+                                    placeholder="Confirm Password" formControlName="confirmPassword" >
+                                <i class="fi fi-rr-eye-crossed eye_icon"></i>
+                            </div>
+                            <div *ngIf="confirmPassword">
+                                <small class="form-text text-danger"
+                                    *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.touched || confirmPassword.dirty)">This
+                                    field is required</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button class="btn login_btn fs-15 fw-700 w-100 m-0 right_menu_toggle"
+                        [disabled]="passwordReset.invalid">Reset Password</button>
+                    <a href="" class="back_login"><img src="assets/images/temp_img/back.png"> Back to login</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

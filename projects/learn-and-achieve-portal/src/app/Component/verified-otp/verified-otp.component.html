@@ -1,0 +1,47 @@
+<div class="login container">
+    <div class="row h-100">
+        <!-- LEFT LOGIN IMAGE -->
+        <div class="col-md-6 m-auto position-relative">
+            <div class="loginbackground">
+                <div class="login_details">
+                    <h2 class="fs-20 fw-600 text-white text-center">Lorem ipsum dolor sit amet, consectetur</h2>
+                    <h3 class="fs-18 fw-300 text-white text-center">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</h3>
+                </div>
+            </div>
+        </div>
+        <!-- RIGHT SIDE -->
+        <div class="col-md-6 m-auto">
+            <div class="login_img" id="btn3">
+                <div class="col-md-7 m-auto login_box">
+                    <div class="d-flex justify-content-center login_logo">
+                        <img src="assets/images/temp_img/logo.png" class="img-fluid">
+                    </div>
+                     <div class="mb_30 text-center">
+                        <h3 class="black fs-26 fw-600 mb-2">Enter OTP</h3>
+                        <h4 class="fs-16 fw-500 black mb-0">For Login</h4>
+                    </div> 
+                    <form [formGroup]="otpForm" (ngSubmit)="submitForm()">
+                        <div class="p-0 mb_40">
+                          <div class="d-flex gap_16 justify-content-between">
+                            <input type="text" formControlName="digit1" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit2" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit3" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit4" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit5" maxlength="1" class="otp_number_input">
+                            <input type="text" formControlName="digit6" maxlength="1" class="otp_number_input">
+                          </div>
+                        </div>
+                        <button type="submit" class="btn login_btn fs-15 fw-700 w-100 m-0 right_menu_toggle">Verify my account</button>
+                        <h4 class="resent_otp">Didn’t get the code? <span (click)="resentOTP()">Resend OTP</span></h4>
+                      </form>
+                      
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

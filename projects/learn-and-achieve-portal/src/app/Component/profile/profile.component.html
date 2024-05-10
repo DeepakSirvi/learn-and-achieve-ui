@@ -1,0 +1,181 @@
+<!-- MAIN CONTENT -->
+<div class="main_content contentSection scroll_bar">
+
+
+
+    <!-- Dashboard -->
+    <div class="content">
+        <div class="mb-4 d-flex justify-content-between">
+            <h1 class="fs-18 fw-600 mb-0">PROFILE</h1>
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+                aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="table_container table-responsive" style="display: block;">
+            <div class="Officer_table">
+                <div class="table_headings">
+                    <h4 class="fs-20 fw-600 dark mb-0">Edit Profile</h4>
+                </div>
+            </div>
+            <!-- tabs -->
+
+            <!-- user details tabs -->
+            <ul class="nav nav-pills mb-4 gap_12" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="tabs_btn active fs-16 fw-600" id="Transactionss" data-bs-toggle="pill"
+                        data-bs-target="#Transactions" type="button" role="tab" aria-controls="pills-Transactions"
+                        aria-selected="true">Personal Details</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="tabs_btn fs-16 fw-600" id="Emergencys" data-bs-toggle="pill"
+                        data-bs-target="#Emergency" type="button" role="tab" aria-controls="pills-Emergency"
+                        aria-selected="false">Change Password</button>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+
+                <!-- Personal Details tabs -->
+                <div class="tab-pane fade show active" id="Transactions" role="tabpanel"
+                    aria-labelledby="pills-Transactions-tab" tabindex="0">
+
+                    <div class="table_container mb-4 table-responsive">
+                        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">x
+
+                        <div class="col-md-2 m-auto">
+                            <div class="mb-4 position-relative  d-flex justify-content-center">
+                                <input id="file" type="file" (change)="onFileChange($event)" class="d-none">
+                                <img class="modal_profile" id="output" [src]="user.userProfile" >
+                                <label class="-label" for="file">
+                                    <a
+                                        class="secondary fs-16 fw-500  edit_img d-flex justify-content-center align-items-center">
+                                        <img src="assets/images/svg2/c.svg">
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="profile_text">
+                                <h2>{{user.userName}}</h2>
+                                <h3>{{user.userRole}}</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3 ps-0 px-2">
+                                <label for="" class="modal_input_heading">Name<span class="danger">*</span></label>
+                                <input type="text" class="form-control profile_edit" placeholder="Enter Name"
+                                    formControlName="userName">
+                            </div>
+                            <div *ngIf="userName">
+                                <small class="form-text text-danger"
+                                    *ngIf="userName.errors?.['required'] && (userName.touched || userName.dirty)">This
+                                    field is required</small>
+                            </div>
+                            <div class="col-md-6 mb-3 ps-0 px-2">
+                                <label for="" class="modal_input_heading">Email Id<span class="danger">*</span></label>
+                                <input type="text" class="form-control profile_edit light" placeholder="Enter Email"
+                                    formControlName="userEmail">
+                            </div>
+                            <div *ngIf="userEmail">
+                                <small class="form-text text-danger"
+                                    *ngIf="userEmail.errors?.['required'] && (userEmail.touched || userEmail.dirty)">This
+                                    field is required</small>
+                            </div>
+                            <div class="col-md-6 mb-3 ps-0 px-2">
+                                <label for="" class="modal_input_heading">Mobile No.<span
+                                        class="danger">*</span></label>
+                                <input type="text" class="form-control profile_edit light"
+                                    placeholder="Enter Mobile No." formControlName="userPhone">
+                            </div>
+                            <div *ngIf="userPhone">
+                                <small class="form-text text-danger"
+                                    *ngIf="userPhone.errors?.['required'] && (userPhone.touched || userPhone.dirty)">This
+                                    field is required</small>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="" class="back_login "><img src="assets/images/svg2/backarrow.svg"
+                                    class="mx-2 ms-0">Back</a>
+                            <div class="select-btn ">
+                                <button class="gap_6 primary_btn" data-bs-target="#profile_update"
+                                    data-bs-toggle="modal" [disabled]="profileForm.invalid">Update</button>
+                                <img src="assets/images/svg2/right.svg" class="add_btn">
+                            </div>
+
+                        </div>
+                    </form>
+                    </div>
+                
+                </div>
+           
+
+                <!-- Personal Detailss tabs end-->
+
+                <!--Change Password tābs -->
+                <div class="tab-pane fade" id="Emergency" role="tabpanel" aria-labelledby="pills-Emergency-tab"
+                    tabindex="0">
+                    <div class="table_container mb-4 table-responsive">
+
+
+                        <form [formGroup]="changePassword" (ngSubmit)="updatePassword()">
+                            <div class="row">
+                                <div class="col-md-6 mb-3 ps-0 px-2">
+                                    <label for="" class="modal_input_heading">Current Password<span
+                                            class="danger">*</span></label>
+                                    <input type="text" class="form-control profile_edit"
+                                        placeholder="Enter Current Password" formControlName="currentPassword">
+                                </div>
+                                <div *ngIf="currentPassword">
+                                    <small class="form-text text-danger"
+                                        *ngIf="currentPassword.errors?.['required'] && (currentPassword.touched || currentPassword.dirty)">This
+                                        field is required</small>
+                                </div>
+                                <div class="col-md-6 mb-3 ps-0 px-2">
+                                    <label for="" class="modal_input_heading">New Password<span
+                                            class="danger">*</span></label>
+                                    <input type="text" class="form-control profile_edit light"
+                                        placeholder="Enter New Password" formControlName="newPassword">
+                                </div>
+
+                                <div *ngIf="newPassword">
+                                    <small class="form-text text-danger"
+                                        *ngIf="newPassword.errors?.['required'] && (newPassword.touched || newPassword.dirty)">This
+                                        field is required</small>
+                                </div>
+                                <div class="col-md-6 mb-3 ps-0 px-2">
+                                    <label for="" class="modal_input_heading">Confirm Password<span
+                                            class="danger">*</span></label>
+                                    <input type="text" class="form-control profile_edit light"
+                                        placeholder="Enter Confirm Password" formControlName="confirmPassword">
+                                </div>
+                                <div *ngIf="confirmPassword">
+                                    <small class="form-text text-danger"
+                                        *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.touched || confirmPassword.dirty)">This
+                                        field is required</small>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="" class="back_login "><img src="assets/images/svg2/backarrow.svg"
+                                        class="mx-2 ms-0">Back</a>
+                                <div class="select-btn ">
+                                    <button class="gap_6 primary_btn" data-bs-target="#password_update"
+                                        data-bs-toggle="modal" [disabled]="changePassword.invalid">Change
+                                        Password</button>
+                                    <img src="assets/images/svg2/lock2.svg" class="add_btn">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--  Change Password tābs end-->
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
